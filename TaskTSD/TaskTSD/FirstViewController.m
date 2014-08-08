@@ -17,19 +17,28 @@
 
 float origX;
 float origY;
-
+#define kRANDOM 200
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-	BubbleView * bubbleView = [[BubbleView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
-	bubbleView.backgroundColor = [UIColor clearColor];
-    UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
 
-    [bubbleView addGestureRecognizer:bubblePanGesture];
-    
-	[self.view addSubview:bubbleView];
+	for(int i = 0; i < 7; i++){
+
+		int x = arc4random() % kRANDOM;
+		int y = arc4random() % kRANDOM;
+
+		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
+
+		BubbleView * bubbleViewLocal = [[BubbleView alloc] initWithFrame:CGRectMake(x, y, 100, 50)];
+		bubbleViewLocal.backgroundColor = [UIColor clearColor];
+
+		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
+
+		[self.view addSubview:bubbleViewLocal];
+	}
+
 	
 }
 
@@ -50,8 +59,6 @@ float origY;
     newCenter.x = origX + [pan translationInView:pan.view].x;
     newCenter.y = origY + [pan translationInView:pan.view].y;
     pan.view.center = newCenter;
-    
-    //NSLog(@"Panned %f, %f", [pan translationInView:pan.view].x, [pan translationInView:pan.view].y );
 }
 
 @end

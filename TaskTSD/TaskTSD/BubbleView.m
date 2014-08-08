@@ -10,6 +10,7 @@
 
 @implementation BubbleView
 
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -18,7 +19,6 @@
     }
     return self;
 }
-
 
 // Only override drawRect: if you perform custom drawing.
 // An empty implementation adversely affects performance during animation.
@@ -34,8 +34,7 @@
 	float HEIGHTOFPOPUPTRIANGLE = 0.0f;
 	float WIDTHOFPOPUPTRIANGLE = 80.0f;
 	CGColorRef borderColor = [[UIColor grayColor] CGColor];
-	CGColorRef bgColor = [[UIColor redColor] CGColor];
-
+	CGColorRef bgColor = [[self getRandomColor] CGColor];
 	CGContextRef context = UIGraphicsGetCurrentContext();
 	CGContextSetLineJoin(context, kCGLineJoinRound);
 	CGContextSetLineWidth(context, strokeWidth);
@@ -67,5 +66,11 @@
 	CGContextClip(context);
 }
 
+-(UIColor *)getRandomColor {
+	CGFloat red = ( arc4random() % 256 / 256.0 );
+	CGFloat green = ( arc4random() % 256 / 256.0 );
+	CGFloat blue = ( arc4random() % 256 / 256.0 );
+	return [UIColor colorWithRed:red green:green blue:blue alpha:1.0f];
+}
 
 @end
