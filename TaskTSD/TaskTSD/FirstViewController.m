@@ -7,6 +7,7 @@
 //
 
 #import "FirstViewController.h"
+#import "BubbleView.h"
 
 @interface FirstViewController ()
 
@@ -18,6 +19,12 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+
+	BubbleView * bubbleView = [[BubbleView alloc] initWithFrame:CGRectMake(100, 100, 100, 100)];
+	bubbleView.backgroundColor = [UIColor clearColor];
+
+	[self.view addSubview:bubbleView];
+	
 }
 
 - (void)didReceiveMemoryWarning

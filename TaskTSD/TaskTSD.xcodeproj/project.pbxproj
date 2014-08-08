@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C90AD6C41994B23F005A035F /* BubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90AD6C31994B23F005A035F /* BubbleView.m */; };
 		D49C77E4198B7DBE00742469 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E3198B7DBE00742469 /* UIKit.framework */; };
 		D49C77E6198B7DBE00742469 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E5198B7DBE00742469 /* Foundation.framework */; };
 		D49C77E8198B7DBE00742469 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E7198B7DBE00742469 /* CoreGraphics.framework */; };
@@ -26,6 +27,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C90AD6C21994B23F005A035F /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
+		C90AD6C31994B23F005A035F /* BubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleView.m; sourceTree = "<group>"; };
 		D49C77E0198B7DBE00742469 /* TaskTSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49C77E3198B7DBE00742469 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49C77E5198B7DBE00742469 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +109,8 @@
 				D49C7808198B7DBE00742469 /* second.png */,
 				D49C780A198B7DBE00742469 /* second@2x.png */,
 				D49C77EA198B7DBE00742469 /* Supporting Files */,
+				C90AD6C21994B23F005A035F /* BubbleView.h */,
+				C90AD6C31994B23F005A035F /* BubbleView.m */,
 			);
 			path = TaskTSD;
 			sourceTree = "<group>";
@@ -196,6 +201,7 @@
 			files = (
 				D49C77F0198B7DBE00742469 /* main.m in Sources */,
 				D49C77F4198B7DBE00742469 /* AppDelegate.m in Sources */,
+				C90AD6C41994B23F005A035F /* BubbleView.m in Sources */,
 				D49C7800198B7DBE00742469 /* FirstViewController.m in Sources */,
 				D49C7807198B7DBE00742469 /* SecondViewController.m in Sources */,
 			);
