@@ -7,7 +7,8 @@
 //
 
 #import "FirstViewController.h"
-#import "BubbleView.h"
+#import "AnotherBubbleView.h"
+
 
 @interface FirstViewController ()
 
@@ -23,16 +24,15 @@ float origY;
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-
-	for(int i = 0; i < 7; i++){
+	for(int i = 0; i < 3; i++){
 
 		int x = arc4random() % kRANDOM;
 		int y = arc4random() % kRANDOM;
 
 		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
 
-		BubbleView * bubbleViewLocal = [[BubbleView alloc] initWithFrame:CGRectMake(x, y, 100, 50)];
-		bubbleViewLocal.backgroundColor = [UIColor clearColor];
+		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(x, y, 120, 80)];
+		bubbleViewLocal.backgroundColor = [self getRandomColor];
 
 		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
 
@@ -59,6 +59,13 @@ float origY;
     newCenter.x = origX + [pan translationInView:pan.view].x;
     newCenter.y = origY + [pan translationInView:pan.view].y;
     pan.view.center = newCenter;
+}
+
+-(UIColor *)getRandomColor {
+	CGFloat red = ( arc4random() % 256 / 256.0 );
+	CGFloat green = ( arc4random() % 256 / 256.0 );
+	CGFloat blue = ( arc4random() % 256 / 256.0 );
+	return [UIColor colorWithRed:red green:green blue:blue alpha:0.5f];
 }
 
 @end
