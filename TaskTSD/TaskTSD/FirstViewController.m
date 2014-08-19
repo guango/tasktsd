@@ -8,9 +8,12 @@
 
 #import "FirstViewController.h"
 #import "AnotherBubbleView.h"
+#import "TaskTSDconfig.h"
+#import "RadarView.h"
 
 
 @interface FirstViewController ()
+
 
 @end
 
@@ -18,28 +21,55 @@
 
 float origX;
 float origY;
-#define kRANDOM 200
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
 
-	for(int i = 0; i < 3; i++){
+	//draw background circles
 
-		int x = arc4random() % kRANDOM;
-		int y = arc4random() % kRANDOM;
+	RadarView *radar = [[RadarView alloc] initWithFrame:self.view.bounds];
+	radar.backgroundColor = [UIColor clearColor];
+	[self.view addSubview:radar];
 
+	// Do any additional setup after loading the view, typically from a nib.
+	// Load tasks from DB
+
+
+}
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+	// if texting resign keyboard
+	BOOL isTexting = NO;
+	for (UIView *subView in self.view.subviews)
+	{
+		if ([subView isFirstResponder])
+		{
+			isTexting = YES;
+			[subView resignFirstResponder];
+			break;
+		}
+	}
+
+	// if not texting create new task @ screen (x,y)
+	if (!isTexting)
+	{
+		UITouch *touch = [[event allTouches] anyObject];
+		CGPoint location = [touch locationInView:touch.view];
 		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
 
-		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(x, y, 120, 80)];
+		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
 		bubbleViewLocal.backgroundColor = [self getRandomColor];
+
+		bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
 
 		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
 
 		[self.view addSubview:bubbleViewLocal];
-	}
-
-	
+		[bubbleViewLocal becomeFirstResponder];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -54,7 +84,7 @@ float origY;
         origX = pan.view.center.x;
         origY = pan.view.center.y;
     }
-    
+
     CGPoint newCenter;
     newCenter.x = origX + [pan translationInView:pan.view].x;
     newCenter.y = origY + [pan translationInView:pan.view].y;
