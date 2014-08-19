@@ -8,7 +8,6 @@
 
 #import "FirstViewController.h"
 #import "AnotherBubbleView.h"
-#import "TaskTSDconfig.h"
 
 
 @interface FirstViewController ()
@@ -23,49 +22,24 @@ float origY;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	//draw background circles
-    
-    
-    
-    // Do any additional setup after loading the view, typically from a nib.
-    // Load tasks from DB
+	// Do any additional setup after loading the view, typically from a nib.
+
+	for(int i = 0; i < 3; i++){
+
+		int x = arc4random() % kRANDOM;
+		int y = arc4random() % kRANDOM;
+
+		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
+
+		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(x, y, 120, 80)];
+		bubbleViewLocal.backgroundColor = [self getRandomColor];
+
+		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
+
+		[self.view addSubview:bubbleViewLocal];
+	}
 
 	
-}
-
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    // if texting resign keyboard
-    BOOL isTexting = NO;
-    for (UIView *subView in self.view.subviews)
-    {
-        if ([subView isFirstResponder])
-        {
-            isTexting = YES;
-            [subView resignFirstResponder];
-            break;
-        }
-    }
-    
-    // if not texting create new task @ screen (x,y)
-    if (!isTexting)
-    {
-        NSLog(@"create new task");
-        UITouch *touch = [[event allTouches] anyObject];
-        CGPoint location = [touch locationInView:touch.view];
-        UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
-        
-		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
-		bubbleViewLocal.backgroundColor = [self getRandomColor];
-        bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
-        
-		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
-        
-		[self.view addSubview:bubbleViewLocal];
-        
-        [bubbleViewLocal becomeFirstResponder];
-    }
-    
 }
 
 - (void)didReceiveMemoryWarning
