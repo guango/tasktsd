@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C90AD6C41994B23F005A035F /* BubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90AD6C31994B23F005A035F /* BubbleView.m */; };
+		D4704F25199E1FF600AECCEB /* AnotherBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = D4704F24199E1FF600AECCEB /* AnotherBubbleView.m */; };
 		D49C77E4198B7DBE00742469 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E3198B7DBE00742469 /* UIKit.framework */; };
 		D49C77E6198B7DBE00742469 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E5198B7DBE00742469 /* Foundation.framework */; };
 		D49C77E8198B7DBE00742469 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E7198B7DBE00742469 /* CoreGraphics.framework */; };
@@ -29,6 +30,9 @@
 /* Begin PBXFileReference section */
 		C90AD6C21994B23F005A035F /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
 		C90AD6C31994B23F005A035F /* BubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleView.m; sourceTree = "<group>"; };
+		D4704F23199E1FF600AECCEB /* AnotherBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnotherBubbleView.h; sourceTree = "<group>"; };
+		D4704F24199E1FF600AECCEB /* AnotherBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnotherBubbleView.m; sourceTree = "<group>"; };
+		D4704F2619A3AA6300AECCEB /* TaskTSDconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskTSDconfig.h; sourceTree = "<group>"; };
 		D49C77E0198B7DBE00742469 /* TaskTSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49C77E3198B7DBE00742469 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49C77E5198B7DBE00742469 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -97,6 +101,8 @@
 		D49C77E9198B7DBE00742469 /* TaskTSD */ = {
 			isa = PBXGroup;
 			children = (
+				D4704F23199E1FF600AECCEB /* AnotherBubbleView.h */,
+				D4704F24199E1FF600AECCEB /* AnotherBubbleView.m */,
 				D49C77F2198B7DBE00742469 /* AppDelegate.h */,
 				D49C77F3198B7DBE00742469 /* AppDelegate.m */,
 				D49C77FB198B7DBE00742469 /* MainStoryboard.storyboard */,
@@ -111,6 +117,7 @@
 				D49C77EA198B7DBE00742469 /* Supporting Files */,
 				C90AD6C21994B23F005A035F /* BubbleView.h */,
 				C90AD6C31994B23F005A035F /* BubbleView.m */,
+				D4704F2619A3AA6300AECCEB /* TaskTSDconfig.h */,
 			);
 			path = TaskTSD;
 			sourceTree = "<group>";
@@ -203,6 +210,7 @@
 				D49C77F4198B7DBE00742469 /* AppDelegate.m in Sources */,
 				C90AD6C41994B23F005A035F /* BubbleView.m in Sources */,
 				D49C7800198B7DBE00742469 /* FirstViewController.m in Sources */,
+				D4704F25199E1FF600AECCEB /* AnotherBubbleView.m in Sources */,
 				D49C7807198B7DBE00742469 /* SecondViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
