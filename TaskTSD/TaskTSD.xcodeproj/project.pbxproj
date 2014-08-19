@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		C90AD6C41994B23F005A035F /* BubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90AD6C31994B23F005A035F /* BubbleView.m */; };
+		C9C8957D19A3BD54001400C4 /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8957C19A3BD54001400C4 /* RadarView.m */; };
+		C9C90A991996C20B00B139AE /* AnotherBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C90A981996C20B00B139AE /* AnotherBubbleView.m */; };
 		D49C77E4198B7DBE00742469 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E3198B7DBE00742469 /* UIKit.framework */; };
 		D49C77E6198B7DBE00742469 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E5198B7DBE00742469 /* Foundation.framework */; };
 		D49C77E8198B7DBE00742469 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E7198B7DBE00742469 /* CoreGraphics.framework */; };
@@ -29,6 +31,11 @@
 /* Begin PBXFileReference section */
 		C90AD6C21994B23F005A035F /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
 		C90AD6C31994B23F005A035F /* BubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleView.m; sourceTree = "<group>"; };
+		C90BFDB3199E15B700F5AAEC /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
+		C9C8957B19A3BD54001400C4 /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RadarView.h; sourceTree = "<group>"; };
+		C9C8957C19A3BD54001400C4 /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RadarView.m; sourceTree = "<group>"; };
+		C9C90A971996C20B00B139AE /* AnotherBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnotherBubbleView.h; sourceTree = "<group>"; };
+		C9C90A981996C20B00B139AE /* AnotherBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnotherBubbleView.m; sourceTree = "<group>"; };
 		D49C77E0198B7DBE00742469 /* TaskTSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49C77E3198B7DBE00742469 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49C77E5198B7DBE00742469 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -87,6 +94,7 @@
 		D49C77E2198B7DBE00742469 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C90BFDB3199E15B700F5AAEC /* libsqlite3.dylib */,
 				D49C77E3198B7DBE00742469 /* UIKit.framework */,
 				D49C77E5198B7DBE00742469 /* Foundation.framework */,
 				D49C77E7198B7DBE00742469 /* CoreGraphics.framework */,
@@ -111,6 +119,10 @@
 				D49C77EA198B7DBE00742469 /* Supporting Files */,
 				C90AD6C21994B23F005A035F /* BubbleView.h */,
 				C90AD6C31994B23F005A035F /* BubbleView.m */,
+				C9C90A971996C20B00B139AE /* AnotherBubbleView.h */,
+				C9C90A981996C20B00B139AE /* AnotherBubbleView.m */,
+				C9C8957B19A3BD54001400C4 /* RadarView.h */,
+				C9C8957C19A3BD54001400C4 /* RadarView.m */,
 			);
 			path = TaskTSD;
 			sourceTree = "<group>";
@@ -157,6 +169,11 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = UZ;
+				TargetAttributes = {
+					D49C77DF198B7DBE00742469 = {
+						DevelopmentTeam = J3VDJ256C6;
+					};
+				};
 			};
 			buildConfigurationList = D49C77DB198B7DBE00742469 /* Build configuration list for PBXProject "TaskTSD" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -203,7 +220,9 @@
 				D49C77F4198B7DBE00742469 /* AppDelegate.m in Sources */,
 				C90AD6C41994B23F005A035F /* BubbleView.m in Sources */,
 				D49C7800198B7DBE00742469 /* FirstViewController.m in Sources */,
+				C9C90A991996C20B00B139AE /* AnotherBubbleView.m in Sources */,
 				D49C7807198B7DBE00742469 /* SecondViewController.m in Sources */,
+				C9C8957D19A3BD54001400C4 /* RadarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -288,11 +307,14 @@
 		D49C780F198B7DBE00742469 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TaskTSD/TaskTSD-Prefix.pch";
 				INFOPLIST_FILE = "TaskTSD/TaskTSD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -301,11 +323,14 @@
 		D49C7810198B7DBE00742469 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TaskTSD/TaskTSD-Prefix.pch";
 				INFOPLIST_FILE = "TaskTSD/TaskTSD-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
