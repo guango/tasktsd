@@ -27,13 +27,17 @@
 	
     CGContextRef context = UIGraphicsGetCurrentContext();
     CGContextSetLineWidth(context, 2.0);
-    CGContextSetStrokeColorWithColor(context, [UIColor blueColor].CGColor);
-	int y = 50.0f;
+    CGContextSetStrokeColorWithColor(context, [UIColor lightGrayColor].CGColor);
+    CGContextSetFillColorWithColor(context, [UIColor colorWithRed:0.2f green:0.7f blue:0.9 alpha:0.3f].CGColor);
+	int y = 350.0f;
 	for(int i = 0; i < kTaskTSD_DefaultRadarTimezones; i++){
 		CGRect rectangle = CGRectMake(-self.bounds.size.width / 2, y, kTaskTSD_DefaultRadarRadius * self.bounds.size.width,kTaskTSD_DefaultRadarRadius * self.bounds.size.width);
-		CGContextAddEllipseInRect(context, rectangle);
+
+        CGContextFillEllipseInRect(context, rectangle);
+        CGContextAddEllipseInRect(context, rectangle);
 		CGContextStrokePath(context);
-		y += 100;
+        
+		y -= 100;
 	}
 }
 

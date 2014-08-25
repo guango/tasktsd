@@ -62,8 +62,8 @@ float origY;
 
 		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
 		bubbleViewLocal.backgroundColor = [self getRandomColor];
-
-		bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
+        bubbleViewLocal.font = [UIFont systemFontOfSize:kTaskTSD_DefaultFontSize];
+        bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
 
 		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
 
