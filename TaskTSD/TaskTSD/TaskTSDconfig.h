@@ -17,6 +17,7 @@
 #define kTaskTSD_DefaultRadarRadius 2.0f
 #define kTaskTSD_DefaultRadarTimezones 5
 #define kTaskTSD_DefaultFontSize 20.0f
+#define kTaskTSD_DefaultKeyboradOffsetPadding 15.0f
 
 
 #endif

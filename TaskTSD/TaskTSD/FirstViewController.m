@@ -21,6 +21,9 @@
 
 float origX;
 float origY;
+BOOL bubbleBelowKeyboardHeight = NO;
+float currentViewOffsetOnKeyboard;
+
 
 - (void)viewDidLoad
 {
@@ -32,6 +35,7 @@ float origY;
 	RadarView *radar = [[RadarView alloc] initWithFrame:self.view.bounds];
 	radar.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:radar];
+    [self registerForKeyboardNotifications];
 
 	// Do any additional setup after loading the view, typically from a nib.
 	// Load tasks from DB
@@ -59,6 +63,7 @@ float origY;
 		UITouch *touch = [[event allTouches] anyObject];
 		CGPoint location = [touch locationInView:touch.view];
 		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
+        UIPinchGestureRecognizer *bubblePinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinchBubble:)];
 
 		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
 		bubbleViewLocal.backgroundColor = [self getRandomColor];
@@ -66,9 +71,23 @@ float origY;
         bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
 
 		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
+        [bubbleViewLocal addGestureRecognizer:bubblePinchGesture];
 
 		[self.view addSubview:bubbleViewLocal];
+        [self setBubbleBelowKeyboardHeight:bubbleViewLocal];
 		[bubbleViewLocal becomeFirstResponder];
+    }
+}
+
+-(void)setBubbleBelowKeyboardHeight:(AnotherBubbleView *)bubble
+{
+    float bottomBorderHeight = bubble.frame.origin.y + bubble.frame.size.height;
+    
+    float totalHeightMinusKeyboard = self.view.frame.size.height - (432 / 2);
+    
+    if(totalHeightMinusKeyboard - bottomBorderHeight < 0){
+        bubbleBelowKeyboardHeight = YES;
+        currentViewOffsetOnKeyboard = totalHeightMinusKeyboard - bottomBorderHeight;
     }
 }
 
@@ -90,6 +109,57 @@ float origY;
     newCenter.y = origY + [pan translationInView:pan.view].y;
     pan.view.center = newCenter;
 }
+
+-(void)onPinchBubble:(UIPinchGestureRecognizer *)pinch
+{
+    NSLog(@"%f",pinch.scale);
+    pinch.view.transform = CGAffineTransformScale(pinch.view.transform, pinch.scale, pinch.scale);
+    pinch.scale = 1;
+}
+
+
+- (void)registerForKeyboardNotifications
+{
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillShow:)
+                                                 name:UIKeyboardWillShowNotification object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(keyboardWillBeHidden:)
+                                                 name:UIKeyboardWillHideNotification object:nil];
+    
+}
+
+
+-(void)keyboardWillShow:(NSNotification*)aNotification
+{
+    if(bubbleBelowKeyboardHeight){
+        CGRect bkgndRect = self.view.frame;
+        
+        // we are adding a negative value
+        bkgndRect.origin.y += currentViewOffsetOnKeyboard - kTaskTSD_DefaultKeyboradOffsetPadding;
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view setFrame:bkgndRect];
+        }];
+    }
+}
+
+-(void)keyboardWillBeHidden:(NSNotification*)aNotification
+{
+    if(bubbleBelowKeyboardHeight){
+        CGRect bkgndRect = self.view.frame;
+        // we are substracting a negative value
+        bkgndRect.origin.y -= currentViewOffsetOnKeyboard - kTaskTSD_DefaultKeyboradOffsetPadding;
+        [UIView animateWithDuration:0.5 animations:^{
+            [self.view setFrame:bkgndRect];
+        }];
+    }
+    bubbleBelowKeyboardHeight = NO;
+    
+    
+}
+
 
 -(UIColor *)getRandomColor {
 	CGFloat red = ( arc4random() % 256 / 256.0 );
