@@ -14,7 +14,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        // Initialization code
+
     }
     return self;
 }
@@ -27,5 +27,11 @@
     // Drawing code
 }
 */
+
+
+- (void)layoutSubviews
+{
+	[super layoutSubviews];
+}
 
 @end

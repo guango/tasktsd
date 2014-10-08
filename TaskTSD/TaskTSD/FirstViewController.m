@@ -57,26 +57,55 @@ float currentViewOffsetOnKeyboard;
 		}
 	}
 
-	// if not texting create new task @ screen (x,y)
-	if (!isTexting)
-	{
+	if(!isTexting){
+
+		// if not texting create new task @ screen (x,y)
 		UITouch *touch = [[event allTouches] anyObject];
 		CGPoint location = [touch locationInView:touch.view];
-		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(moveBubble:)];
+		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureHandler:)];
         UIPinchGestureRecognizer *bubblePinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinchBubble:)];
+		UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandler:)];
 
+		[swipeGesture requireGestureRecognizerToFail:bubblePanGesture];
 		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
 		bubbleViewLocal.backgroundColor = [self getRandomColor];
         bubbleViewLocal.font = [UIFont systemFontOfSize:kTaskTSD_DefaultFontSize];
         bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
 
+		[bubbleViewLocal addGestureRecognizer:swipeGesture];
 		[bubbleViewLocal addGestureRecognizer:bubblePanGesture];
         [bubbleViewLocal addGestureRecognizer:bubblePinchGesture];
+		bubbleViewLocal.delegate = self;
+
 
 		[self.view addSubview:bubbleViewLocal];
         [self setBubbleBelowKeyboardHeight:bubbleViewLocal];
 		[bubbleViewLocal becomeFirstResponder];
     }
+}
+
+- (BOOL)textViewShouldBeginEditing:(AnotherBubbleView *)textView {
+
+	[self.view bringSubviewToFront:textView];
+	textView.textAlignment = NSTextAlignmentNatural;
+	[UIView animateWithDuration:0.2 animations:^{
+		textView.alpha = 0.95;
+	}];
+
+
+	return YES;
+}
+
+- (BOOL)textViewShouldEndEditing:(AnotherBubbleView *)textView {
+
+	[UIView animateWithDuration:0.5 animations:^{
+		textView.alpha = 0.7;
+		textView.textAlignment = NSTextAlignmentCenter;
+	} completion:^(BOOL finished) {
+
+	}];
+
+	return YES;
 }
 
 -(void)setBubbleBelowKeyboardHeight:(AnotherBubbleView *)bubble
@@ -97,8 +126,46 @@ float currentViewOffsetOnKeyboard;
     // Dispose of any resources that can be recreated.
 }
 
--(void)moveBubble:(UIPanGestureRecognizer *)pan
+- (BOOL)gestureRecognizerShouldBegin:(UIGestureRecognizer *)gestureRecognizer {
+
+	// check that it is the pan gesture
+	if ([gestureRecognizer isKindOfClass:[UIPanGestureRecognizer class]])
+	{
+		UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)gestureRecognizer;
+		CGPoint velocity = [pan velocityInView:gestureRecognizer.view];
+		NSLog(@"%f", velocity.x);
+		// added an arbitrary velocity for failure
+		if (ABS(velocity.x) > 100)
+		{
+			// fail if the swipe was fast enough - this should allow the swipe gesture to be invoked
+			return NO;
+		}
+	}
+	return YES;
+}
+
+- (void)swipeGestureHandler:(UISwipeGestureRecognizer *)swipeGesture {
+
+	if(swipeGesture.state == UIGestureRecognizerStateRecognized){
+		if (swipeGesture.direction == UISwipeGestureRecognizerDirectionRight) {
+			[UIView animateWithDuration:0.5 animations:^{
+				CGFloat rotationAngel = (CGFloat) (6 * M_PI / 16);
+				CGFloat scale = 0.1;
+				CGAffineTransform transform = CGAffineTransformMakeRotation(rotationAngel);
+				CGAffineTransform scaleTransform = CGAffineTransformScale(transform, scale, scale);
+				swipeGesture.view.transform = scaleTransform;
+				swipeGesture.view.alpha = 0.0;
+			} completion:^(BOOL finished) {
+				NSLog(@"gone!");
+				[swipeGesture.view removeFromSuperview];
+			}];
+		}
+	}
+}
+
+-(void)panGestureHandler:(UIPanGestureRecognizer *)pan
 {
+	//NSLog(@"%lf", [pan velocityInView:pan.view]);//fff
     if([pan state] == UIGestureRecognizerStateBegan){
         origX = pan.view.center.x;
         origY = pan.view.center.y;
@@ -112,7 +179,7 @@ float currentViewOffsetOnKeyboard;
 
 -(void)onPinchBubble:(UIPinchGestureRecognizer *)pinch
 {
-    NSLog(@"%f",pinch.scale);
+    //NSLog(@"%f",pinch.scale);
     pinch.view.transform = CGAffineTransformScale(pinch.view.transform, pinch.scale, pinch.scale);
     pinch.scale = 1;
 }
@@ -165,7 +232,7 @@ float currentViewOffsetOnKeyboard;
 	CGFloat red = ( arc4random() % 256 / 256.0 );
 	CGFloat green = ( arc4random() % 256 / 256.0 );
 	CGFloat blue = ( arc4random() % 256 / 256.0 );
-	return [UIColor colorWithRed:red green:green blue:blue alpha:0.5f];
+	return [UIColor colorWithRed:red green:green blue:blue alpha:0.7f];
 }
 
 @end
