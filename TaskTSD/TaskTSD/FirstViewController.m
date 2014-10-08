@@ -63,6 +63,7 @@ float currentViewOffsetOnKeyboard;
 		UITouch *touch = [[event allTouches] anyObject];
 		CGPoint location = [touch locationInView:touch.view];
 		UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureHandler:)];
+		bubblePanGesture.delegate = self;
         UIPinchGestureRecognizer *bubblePinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinchBubble:)];
 		UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandler:)];
 
@@ -135,7 +136,7 @@ float currentViewOffsetOnKeyboard;
 		CGPoint velocity = [pan velocityInView:gestureRecognizer.view];
 		NSLog(@"%f", velocity.x);
 		// added an arbitrary velocity for failure
-		if (ABS(velocity.x) > 100)
+		if (ABS(velocity.x) > 450)
 		{
 			// fail if the swipe was fast enough - this should allow the swipe gesture to be invoked
 			return NO;

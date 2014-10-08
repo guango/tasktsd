@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FirstViewController : UIViewController <UITextViewDelegate>
+@interface FirstViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate>
 
 @end

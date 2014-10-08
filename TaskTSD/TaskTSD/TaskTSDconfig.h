@@ -11,8 +11,8 @@
 #define TaskTSD_TaskTSDconfig_h
 
 //Radar View default definitions
-#define kTaskTSD_defaultTaskWidth 160.0f
-#define kTaskTSD_DefaultTaskHeight 100.0f
+#define kTaskTSD_defaultTaskWidth 140.0f
+#define kTaskTSD_DefaultTaskHeight 90.0f
 #define kTaskTSD_DefaultTaskCornerRadius 15.0f
 #define kTaskTSD_DefaultRadarRadius 2.0f
 #define kTaskTSD_DefaultRadarTimezones 5
