@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
 
 @interface AnotherBubbleView : UITextView
+
+- (id)initWithTask:(Task *)task;
+
+@property (nonatomic, retain) NSString* taskId;
 
 @end

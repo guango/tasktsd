@@ -10,6 +10,12 @@
 		C90AD6C41994B23F005A035F /* BubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90AD6C31994B23F005A035F /* BubbleView.m */; };
 		C9C8958119A3C5F6001400C4 /* AnotherBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8958019A3C5F6001400C4 /* AnotherBubbleView.m */; };
 		C9C8958419A3C63D001400C4 /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8958319A3C63D001400C4 /* RadarView.m */; };
+		C9F0D3861A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D3841A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld */; };
+		C9F0D38F1A4ECB1C00CD99EA /* Task+Create.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D38E1A4ECB1C00CD99EA /* Task+Create.m */; };
+		C9F0D39A1A4ECCA000CD99EA /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C9F0D3991A4ECCA000CD99EA /* CoreData.framework */; };
+		C9F0D39D1A4EDA2000CD99EA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D39C1A4EDA2000CD99EA /* Task.m */; };
+		C9F0D3A01A4EE70E00CD99EA /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D39F1A4EE70E00CD99EA /* CoreDataTableViewController.m */; };
+		C9F0D3A31A4F51B200CD99EA /* Task+Read.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D3A21A4F51B200CD99EA /* Task+Read.m */; };
 		D49C77E4198B7DBE00742469 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E3198B7DBE00742469 /* UIKit.framework */; };
 		D49C77E6198B7DBE00742469 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E5198B7DBE00742469 /* Foundation.framework */; };
 		D49C77E8198B7DBE00742469 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E7198B7DBE00742469 /* CoreGraphics.framework */; };
@@ -36,6 +42,16 @@
 		C9C8958019A3C5F6001400C4 /* AnotherBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnotherBubbleView.m; sourceTree = "<group>"; };
 		C9C8958219A3C63D001400C4 /* RadarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RadarView.h; path = ../RadarView.h; sourceTree = "<group>"; };
 		C9C8958319A3C63D001400C4 /* RadarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = RadarView.m; path = ../RadarView.m; sourceTree = "<group>"; };
+		C9F0D3851A4EC60C00CD99EA /* TaskDataModels.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TaskDataModels.xcdatamodel; sourceTree = "<group>"; };
+		C9F0D38D1A4ECB1C00CD99EA /* Task+Create.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Create.h"; sourceTree = "<group>"; };
+		C9F0D38E1A4ECB1C00CD99EA /* Task+Create.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Create.m"; sourceTree = "<group>"; };
+		C9F0D3991A4ECCA000CD99EA /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		C9F0D39B1A4EDA2000CD99EA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		C9F0D39C1A4EDA2000CD99EA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		C9F0D39E1A4EE70E00CD99EA /* CoreDataTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CoreDataTableViewController.h; sourceTree = "<group>"; };
+		C9F0D39F1A4EE70E00CD99EA /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
+		C9F0D3A11A4F51B200CD99EA /* Task+Read.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Read.h"; sourceTree = "<group>"; };
+		C9F0D3A21A4F51B200CD99EA /* Task+Read.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Read.m"; sourceTree = "<group>"; };
 		D49C77E0198B7DBE00742469 /* TaskTSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49C77E3198B7DBE00742469 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49C77E5198B7DBE00742469 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -65,6 +81,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F0D39A1A4ECCA000CD99EA /* CoreData.framework in Frameworks */,
 				D49C77E4198B7DBE00742469 /* UIKit.framework in Frameworks */,
 				D49C77E6198B7DBE00742469 /* Foundation.framework in Frameworks */,
 				D49C77E8198B7DBE00742469 /* CoreGraphics.framework in Frameworks */,
@@ -94,6 +111,7 @@
 		D49C77E2198B7DBE00742469 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C9F0D3991A4ECCA000CD99EA /* CoreData.framework */,
 				D49C77E3198B7DBE00742469 /* UIKit.framework */,
 				D49C77E5198B7DBE00742469 /* Foundation.framework */,
 				D49C77E7198B7DBE00742469 /* CoreGraphics.framework */,
@@ -104,6 +122,8 @@
 		D49C77E9198B7DBE00742469 /* TaskTSD */ = {
 			isa = PBXGroup;
 			children = (
+				C9F0D39E1A4EE70E00CD99EA /* CoreDataTableViewController.h */,
+				C9F0D39F1A4EE70E00CD99EA /* CoreDataTableViewController.m */,
 				C9C8957F19A3C5F6001400C4 /* AnotherBubbleView.h */,
 				C9C8958019A3C5F6001400C4 /* AnotherBubbleView.m */,
 				D49C77F2198B7DBE00742469 /* AppDelegate.h */,
@@ -123,6 +143,13 @@
 				D49C7806198B7DBE00742469 /* SecondViewController.m */,
 				D49C77EA198B7DBE00742469 /* Supporting Files */,
 				C9C8957E19A3C455001400C4 /* TaskTSDconfig.h */,
+				C9F0D3841A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld */,
+				C9F0D39B1A4EDA2000CD99EA /* Task.h */,
+				C9F0D39C1A4EDA2000CD99EA /* Task.m */,
+				C9F0D38D1A4ECB1C00CD99EA /* Task+Create.h */,
+				C9F0D38E1A4ECB1C00CD99EA /* Task+Create.m */,
+				C9F0D3A11A4F51B200CD99EA /* Task+Read.h */,
+				C9F0D3A21A4F51B200CD99EA /* Task+Read.m */,
 			);
 			path = TaskTSD;
 			sourceTree = "<group>";
@@ -211,13 +238,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C9F0D3A31A4F51B200CD99EA /* Task+Read.m in Sources */,
+				C9F0D39D1A4EDA2000CD99EA /* Task.m in Sources */,
 				D49C77F0198B7DBE00742469 /* main.m in Sources */,
+				C9F0D3A01A4EE70E00CD99EA /* CoreDataTableViewController.m in Sources */,
 				D49C77F4198B7DBE00742469 /* AppDelegate.m in Sources */,
 				C90AD6C41994B23F005A035F /* BubbleView.m in Sources */,
 				D49C7800198B7DBE00742469 /* FirstViewController.m in Sources */,
+				C9F0D3861A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld in Sources */,
 				C9C8958119A3C5F6001400C4 /* AnotherBubbleView.m in Sources */,
 				D49C7807198B7DBE00742469 /* SecondViewController.m in Sources */,
 				C9C8958419A3C63D001400C4 /* RadarView.m in Sources */,
+				C9F0D38F1A4ECB1C00CD99EA /* Task+Create.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -347,6 +379,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		C9F0D3841A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				C9F0D3851A4EC60C00CD99EA /* TaskDataModels.xcdatamodel */,
+			);
+			currentVersion = C9F0D3851A4EC60C00CD99EA /* TaskDataModels.xcdatamodel */;
+			path = TaskDataModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D49C77D8198B7DBE00742469 /* Project object */;
 }

@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreDataTableViewController.h"
 
-@interface FirstViewController : UIViewController <UITextViewDelegate, UIGestureRecognizerDelegate>
+@interface FirstViewController : CoreDataTableViewController <UITextViewDelegate, UIGestureRecognizerDelegate>
+
+// The Model for this class.
+// Essentially specifies the database to look in to find all Groups to display in this table.
+@property (nonatomic, strong) NSManagedObjectContext *managedObjectContext;
 
 @end

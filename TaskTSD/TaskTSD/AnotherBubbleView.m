@@ -10,11 +10,24 @@
 
 @implementation AnotherBubbleView
 
+@synthesize taskId;
+
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
+        self.taskId = [[NSUUID UUID] UUIDString];
+    }
+    return self;
+}
 
+- (id)initWithTask:(Task *)task
+{
+    CGRect rect = CGRectMake(task.xPosition.floatValue, task.yPosition.floatValue, task.width.floatValue, task.height.floatValue);
+    self = [super initWithFrame:rect];
+    if (self) {
+        self.taskId = task.taskId;
+        self.text = task.text;
     }
     return self;
 }

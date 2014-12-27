@@ -10,6 +10,8 @@
 #import "AnotherBubbleView.h"
 #import "TaskTSDconfig.h"
 #import "RadarView.h"
+#import "Task+Create.h"
+#import "Task+Read.h"
 
 
 @interface FirstViewController ()
@@ -24,6 +26,19 @@ float origY;
 BOOL bubbleBelowKeyboardHeight = NO;
 float currentViewOffsetOnKeyboard;
 
+- (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
+{
+    _managedObjectContext = managedObjectContext;
+    if (managedObjectContext) {
+        NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Task"];
+        
+        request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"yPosition" ascending:YES selector:@selector(compare:)]];
+        request.predicate = nil; // all Activities
+        self.fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:request managedObjectContext:managedObjectContext sectionNameKeyPath:nil cacheName:nil];
+    } else {
+        self.fetchedResultsController = nil;
+    }
+}
 
 - (void)viewDidLoad
 {
@@ -39,8 +54,81 @@ float currentViewOffsetOnKeyboard;
 
 	// Do any additional setup after loading the view, typically from a nib.
 	// Load tasks from DB
+}
 
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    if (!self.managedObjectContext) {
+        [self useDemoDocument];
+    }
+}
 
+-(void)loadTasks {
+    
+    NSError *error;
+    [self.fetchedResultsController performFetch:&error];
+    if (error) {
+        NSLog(@"[%@ %@] %@ (%@)", NSStringFromClass([self class]), NSStringFromSelector(_cmd), [error localizedDescription], [error localizedFailureReason]);
+    }
+    
+    NSArray* results = [self.fetchedResultsController fetchedObjects];
+    if(results){
+        NSLog(@"loaded %d results", [results count]);
+        for (Task* task in results) {
+            AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithTask:task];
+            bubbleViewLocal.backgroundColor = [self getRandomColor];
+            bubbleViewLocal.font = [UIFont systemFontOfSize:kTaskTSD_DefaultFontSize];
+            bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
+            
+            UIPanGestureRecognizer *bubblePanGesture = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureHandler:)];
+            bubblePanGesture.delegate = self;
+            UIPinchGestureRecognizer *bubblePinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinchBubble:)];
+            UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandler:)];
+            [swipeGesture requireGestureRecognizerToFail:bubblePanGesture];
+            
+            [bubbleViewLocal addGestureRecognizer:swipeGesture];
+            [bubbleViewLocal addGestureRecognizer:bubblePanGesture];
+            [bubbleViewLocal addGestureRecognizer:bubblePinchGesture];
+            bubbleViewLocal.delegate = self;
+            
+            
+            [self.view addSubview:bubbleViewLocal];
+        }
+    };
+}
+
+// Either creates, opens or just uses the demo document
+//   (actually, it will never "just use" it since it just creates the UIManagedDocument instance here;
+//    the "just uses" case is just shown that if someone hands you a UIManagedDocument, it might already
+//    be open and so you can just use it if it's documentState is UIDocumentStateNormal).
+//
+// Creating and opening are asynchronous, so in the completion handler we set our Model (managedObjectContext).
+
+- (void)useDemoDocument
+{
+    NSURL *url = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    url = [url URLByAppendingPathComponent:@"Tasks Document"];
+    UIManagedDocument *document = [[UIManagedDocument alloc] initWithFileURL:url];
+    
+    if (![[NSFileManager defaultManager] fileExistsAtPath:[url path]]) {
+        [document saveToURL:url
+           forSaveOperation:UIDocumentSaveForCreating
+          completionHandler:^(BOOL success) {
+              if (success) {
+                  self.managedObjectContext = document.managedObjectContext;
+              }
+          }];
+    } else if (document.documentState == UIDocumentStateClosed) {
+        [document openWithCompletionHandler:^(BOOL success) {
+            if (success) {
+                self.managedObjectContext = document.managedObjectContext;
+                [self loadTasks];
+            }
+        }];
+    } else {
+        self.managedObjectContext = document.managedObjectContext;
+        [self loadTasks];
+    }
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
@@ -66,8 +154,8 @@ float currentViewOffsetOnKeyboard;
 		bubblePanGesture.delegate = self;
         UIPinchGestureRecognizer *bubblePinchGesture = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(onPinchBubble:)];
 		UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandler:)];
-
 		[swipeGesture requireGestureRecognizerToFail:bubblePanGesture];
+        
 		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
 		bubbleViewLocal.backgroundColor = [self getRandomColor];
         bubbleViewLocal.font = [UIFont systemFontOfSize:kTaskTSD_DefaultFontSize];
@@ -103,7 +191,7 @@ float currentViewOffsetOnKeyboard;
 		textView.alpha = 0.7;
 		textView.textAlignment = NSTextAlignmentCenter;
 	} completion:^(BOOL finished) {
-
+        [Task managedTaskWithTaskId:textView.taskId text:textView.text andRect:textView.frame inManagedObjectContext:self.managedObjectContext];
 	}];
 
 	return YES;
@@ -158,7 +246,18 @@ float currentViewOffsetOnKeyboard;
 				swipeGesture.view.alpha = 0.0;
 			} completion:^(BOOL finished) {
 				NSLog(@"gone!");
-				[swipeGesture.view removeFromSuperview];
+                AnotherBubbleView * view = (AnotherBubbleView *)swipeGesture.view;
+                if(view){
+                    NSString* taskId = view.taskId;
+                    if(taskId){
+                        Task* task = [Task managedTaskWithTaskId:taskId inManagedObjectContext:self.managedObjectContext];
+                        if(task){
+                            [self.managedObjectContext deleteObject:task];
+                            self.managedObjectContext s
+                        }
+                    }
+                }
+                [swipeGesture.view removeFromSuperview];
 			}];
 		}
 	}
