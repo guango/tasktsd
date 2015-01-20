@@ -16,6 +16,7 @@
 		C9F0D39D1A4EDA2000CD99EA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D39C1A4EDA2000CD99EA /* Task.m */; };
 		C9F0D3A01A4EE70E00CD99EA /* CoreDataTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D39F1A4EE70E00CD99EA /* CoreDataTableViewController.m */; };
 		C9F0D3A31A4F51B200CD99EA /* Task+Read.m in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D3A21A4F51B200CD99EA /* Task+Read.m */; };
+		D49BF4AF1A6EBE45007621E2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D49BF4AE1A6EBE45007621E2 /* Images.xcassets */; };
 		D49C77E4198B7DBE00742469 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E3198B7DBE00742469 /* UIKit.framework */; };
 		D49C77E6198B7DBE00742469 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E5198B7DBE00742469 /* Foundation.framework */; };
 		D49C77E8198B7DBE00742469 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D49C77E7198B7DBE00742469 /* CoreGraphics.framework */; };
@@ -52,6 +53,7 @@
 		C9F0D39F1A4EE70E00CD99EA /* CoreDataTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CoreDataTableViewController.m; sourceTree = "<group>"; };
 		C9F0D3A11A4F51B200CD99EA /* Task+Read.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Read.h"; sourceTree = "<group>"; };
 		C9F0D3A21A4F51B200CD99EA /* Task+Read.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Read.m"; sourceTree = "<group>"; };
+		D49BF4AE1A6EBE45007621E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D49C77E0198B7DBE00742469 /* TaskTSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49C77E3198B7DBE00742469 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49C77E5198B7DBE00742469 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -150,6 +152,7 @@
 				C9F0D38E1A4ECB1C00CD99EA /* Task+Create.m */,
 				C9F0D3A11A4F51B200CD99EA /* Task+Read.h */,
 				C9F0D3A21A4F51B200CD99EA /* Task+Read.m */,
+				D49BF4AE1A6EBE45007621E2 /* Images.xcassets */,
 			);
 			path = TaskTSD;
 			sourceTree = "<group>";
@@ -220,6 +223,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D49C77EE198B7DBE00742469 /* InfoPlist.strings in Resources */,
+				D49BF4AF1A6EBE45007621E2 /* Images.xcassets in Resources */,
 				D49C77F6198B7DBE00742469 /* Default.png in Resources */,
 				D49C77F8198B7DBE00742469 /* Default@2x.png in Resources */,
 				D49C77FA198B7DBE00742469 /* Default-568h@2x.png in Resources */,
@@ -334,6 +338,8 @@
 		D49C780F198B7DBE00742469 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TaskTSD/TaskTSD-Prefix.pch";
 				INFOPLIST_FILE = "TaskTSD/TaskTSD-Info.plist";
@@ -347,6 +353,8 @@
 		D49C7810198B7DBE00742469 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "TaskTSD/TaskTSD-Prefix.pch";
 				INFOPLIST_FILE = "TaskTSD/TaskTSD-Info.plist";

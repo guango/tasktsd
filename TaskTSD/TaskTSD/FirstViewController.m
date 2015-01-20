@@ -253,7 +253,7 @@ float currentViewOffsetOnKeyboard;
                         Task* task = [Task managedTaskWithTaskId:taskId inManagedObjectContext:self.managedObjectContext];
                         if(task){
                             [self.managedObjectContext deleteObject:task];
-                            self.managedObjectContext s
+                        
                         }
                     }
                 }
