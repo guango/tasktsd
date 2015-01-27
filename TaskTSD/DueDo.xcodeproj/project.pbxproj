@@ -54,14 +54,14 @@
 		C9F0D3A11A4F51B200CD99EA /* Task+Read.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Task+Read.h"; sourceTree = "<group>"; };
 		C9F0D3A21A4F51B200CD99EA /* Task+Read.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Task+Read.m"; sourceTree = "<group>"; };
 		D49BF4AE1A6EBE45007621E2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		D49C77E0198B7DBE00742469 /* TaskTSD.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaskTSD.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D49C77E0198B7DBE00742469 /* DueDo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DueDo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D49C77E3198B7DBE00742469 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D49C77E5198B7DBE00742469 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D49C77E7198B7DBE00742469 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		D49C77EB198B7DBE00742469 /* TaskTSD-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "TaskTSD-Info.plist"; sourceTree = "<group>"; };
+		D49C77EB198B7DBE00742469 /* DueDo-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DueDo-Info.plist"; sourceTree = "<group>"; };
 		D49C77ED198B7DBE00742469 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D49C77EF198B7DBE00742469 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		D49C77F1198B7DBE00742469 /* TaskTSD-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TaskTSD-Prefix.pch"; sourceTree = "<group>"; };
+		D49C77F1198B7DBE00742469 /* DueDo-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DueDo-Prefix.pch"; sourceTree = "<group>"; };
 		D49C77F2198B7DBE00742469 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D49C77F3198B7DBE00742469 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D49C77F5198B7DBE00742469 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -105,7 +105,7 @@
 		D49C77E1198B7DBE00742469 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				D49C77E0198B7DBE00742469 /* TaskTSD.app */,
+				D49C77E0198B7DBE00742469 /* DueDo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -160,10 +160,10 @@
 		D49C77EA198B7DBE00742469 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D49C77EB198B7DBE00742469 /* TaskTSD-Info.plist */,
+				D49C77EB198B7DBE00742469 /* DueDo-Info.plist */,
 				D49C77EC198B7DBE00742469 /* InfoPlist.strings */,
 				D49C77EF198B7DBE00742469 /* main.m */,
-				D49C77F1198B7DBE00742469 /* TaskTSD-Prefix.pch */,
+				D49C77F1198B7DBE00742469 /* DueDo-Prefix.pch */,
 				D49C77F5198B7DBE00742469 /* Default.png */,
 				D49C77F7198B7DBE00742469 /* Default@2x.png */,
 				D49C77F9198B7DBE00742469 /* Default-568h@2x.png */,
@@ -174,9 +174,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		D49C77DF198B7DBE00742469 /* TaskTSD */ = {
+		D49C77DF198B7DBE00742469 /* DueDo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = D49C780E198B7DBE00742469 /* Build configuration list for PBXNativeTarget "TaskTSD" */;
+			buildConfigurationList = D49C780E198B7DBE00742469 /* Build configuration list for PBXNativeTarget "DueDo" */;
 			buildPhases = (
 				D49C77DC198B7DBE00742469 /* Sources */,
 				D49C77DD198B7DBE00742469 /* Frameworks */,
@@ -186,9 +186,9 @@
 			);
 			dependencies = (
 			);
-			name = TaskTSD;
+			name = DueDo;
 			productName = TaskTSD;
-			productReference = D49C77E0198B7DBE00742469 /* TaskTSD.app */;
+			productReference = D49C77E0198B7DBE00742469 /* DueDo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -199,8 +199,13 @@
 			attributes = {
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = UZ;
+				TargetAttributes = {
+					D49C77DF198B7DBE00742469 = {
+						DevelopmentTeam = CWWMH2JQ94;
+					};
+				};
 			};
-			buildConfigurationList = D49C77DB198B7DBE00742469 /* Build configuration list for PBXProject "TaskTSD" */;
+			buildConfigurationList = D49C77DB198B7DBE00742469 /* Build configuration list for PBXProject "DueDo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -212,7 +217,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				D49C77DF198B7DBE00742469 /* TaskTSD */,
+				D49C77DF198B7DBE00742469 /* DueDo */,
 			);
 		};
 /* End PBXProject section */
@@ -340,11 +345,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TaskTSD/TaskTSD-Prefix.pch";
-				INFOPLIST_FILE = "TaskTSD/TaskTSD-Info.plist";
+				GCC_PREFIX_HEADER = "TaskTSD/DueDo-Prefix.pch";
+				INFOPLIST_FILE = "TaskTSD/DueDo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DueDo;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -355,11 +363,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "TaskTSD/TaskTSD-Prefix.pch";
-				INFOPLIST_FILE = "TaskTSD/TaskTSD-Info.plist";
+				GCC_PREFIX_HEADER = "TaskTSD/DueDo-Prefix.pch";
+				INFOPLIST_FILE = "TaskTSD/DueDo-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = DueDo;
+				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
@@ -368,7 +379,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		D49C77DB198B7DBE00742469 /* Build configuration list for PBXProject "TaskTSD" */ = {
+		D49C77DB198B7DBE00742469 /* Build configuration list for PBXProject "DueDo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D49C780C198B7DBE00742469 /* Debug */,
@@ -377,7 +388,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		D49C780E198B7DBE00742469 /* Build configuration list for PBXNativeTarget "TaskTSD" */ = {
+		D49C780E198B7DBE00742469 /* Build configuration list for PBXNativeTarget "DueDo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				D49C780F198B7DBE00742469 /* Debug */,

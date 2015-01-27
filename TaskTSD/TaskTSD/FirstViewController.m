@@ -187,12 +187,20 @@ float currentViewOffsetOnKeyboard;
 
 - (BOOL)textViewShouldEndEditing:(AnotherBubbleView *)textView {
 
+    Task *task = [Task managedTaskWithTaskId:textView.taskId text:textView.text andRect:textView.frame inManagedObjectContext:self.managedObjectContext];
+    task.text = textView.text;
+    NSError *error;
+    [self.managedObjectContext save:&error];
+    if(error){
+        NSLog(@"SAVE ERROR");
+    }
 	[UIView animateWithDuration:0.5 animations:^{
 		textView.alpha = 0.7;
 		textView.textAlignment = NSTextAlignmentCenter;
 	} completion:^(BOOL finished) {
-        [Task managedTaskWithTaskId:textView.taskId text:textView.text andRect:textView.frame inManagedObjectContext:self.managedObjectContext];
-	}];
+        
+    }];
+    
 
 	return YES;
 }
@@ -282,6 +290,19 @@ float currentViewOffsetOnKeyboard;
     //NSLog(@"%f",pinch.scale);
     pinch.view.transform = CGAffineTransformScale(pinch.view.transform, pinch.scale, pinch.scale);
     pinch.scale = 1;
+    
+    if ( [pinch.view isKindOfClass:[AnotherBubbleView class]] ){
+        AnotherBubbleView *taskBubble = (AnotherBubbleView *)pinch.view;
+        
+        Task *task = [Task managedTaskWithTaskId:taskBubble.taskId text:taskBubble.text andRect:taskBubble.frame inManagedObjectContext:self.managedObjectContext];
+        task.xPosition = [NSNumber numberWithFloat:taskBubble.frame.origin.x];
+        task.yPosition = [NSNumber numberWithFloat:taskBubble.frame.origin.y];
+        task.height = [NSNumber numberWithFloat:taskBubble.frame.size.height];
+        task.width = [NSNumber numberWithFloat:taskBubble.frame.size.width];
+        NSError *error;
+        [self.managedObjectContext save:&error];
+        
+    }
 }
 
 
