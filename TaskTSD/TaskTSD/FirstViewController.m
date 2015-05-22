@@ -12,6 +12,7 @@
 #import "RadarView.h"
 #import "Task+Create.h"
 #import "Task+Read.h"
+#import "SideActionView.h"
 
 
 @interface FirstViewController ()
@@ -52,6 +53,8 @@ float lastScale;
 	radar.backgroundColor = [UIColor clearColor];
 	[self.view addSubview:radar];
     [self registerForKeyboardNotifications];
+    
+    [self createSideActionViews];
 
 	// Do any additional setup after loading the view, typically from a nib.
 	// Load tasks from DB
@@ -62,6 +65,19 @@ float lastScale;
     if (!self.managedObjectContext) {
         [self useDemoDocument];
     }
+}
+
+-(void)createSideActionViews {
+    NSMutableArray *arr = [NSMutableArray arrayWithCapacity:sideTypeSize];
+    for (int i = 0; i < sideTypeSize; ++i) {
+        UIView *view = [[SideActionView alloc] initWithType:(SideActionViewType)i];
+        [arr addObject:view];
+        if(view){
+            [self.view addSubview:view];
+        }
+    }
+    
+    sideViews = [NSArray arrayWithArray:arr];
 }
 
 -(void)loadTasks {
@@ -231,7 +247,6 @@ float lastScale;
 	{
 		UIPanGestureRecognizer *pan = (UIPanGestureRecognizer *)gestureRecognizer;
 		CGPoint velocity = [pan velocityInView:gestureRecognizer.view];
-		NSLog(@"%f", velocity.x);
 		// added an arbitrary velocity for failure
 		if (ABS(velocity.x) > 450)
 		{
@@ -274,16 +289,26 @@ float lastScale;
 
 -(void)panGestureHandler:(UIPanGestureRecognizer *)pan
 {
-	//NSLog(@"%lf", [pan velocityInView:pan.view]);//fff
     if([pan state] == UIGestureRecognizerStateBegan){
         origX = pan.view.center.x;
         origY = pan.view.center.y;
+        [self changeSideActionViewsOpacity:kSideBarOnFocusOpacity];
+    }
+    
+    if([pan state] == UIGestureRecognizerStateEnded){
+        [self changeSideActionViewsOpacity:kSideBarDefaultOpacity];
     }
 
     CGPoint newCenter;
     newCenter.x = origX + [pan translationInView:pan.view].x;
     newCenter.y = origY + [pan translationInView:pan.view].y;
     pan.view.center = newCenter;
+}
+
+-(void)changeSideActionViewsOpacity:(CGFloat)alpha {
+    for (UIView *view in sideViews) {
+        view.alpha = alpha;
+    }
 }
 
 -(void)onPinchBubble:(UIPinchGestureRecognizer *)pinch

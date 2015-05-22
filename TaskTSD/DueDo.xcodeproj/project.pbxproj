@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C90AD6C41994B23F005A035F /* BubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C90AD6C31994B23F005A035F /* BubbleView.m */; };
+		C963FDBB1B0F13AB004E56DB /* SideActionView.m in Sources */ = {isa = PBXBuildFile; fileRef = C963FDBA1B0F13AB004E56DB /* SideActionView.m */; };
 		C9C8958119A3C5F6001400C4 /* AnotherBubbleView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8958019A3C5F6001400C4 /* AnotherBubbleView.m */; };
 		C9C8958419A3C63D001400C4 /* RadarView.m in Sources */ = {isa = PBXBuildFile; fileRef = C9C8958319A3C63D001400C4 /* RadarView.m */; };
 		C9F0D3861A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = C9F0D3841A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld */; };
@@ -38,6 +39,8 @@
 /* Begin PBXFileReference section */
 		C90AD6C21994B23F005A035F /* BubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BubbleView.h; sourceTree = "<group>"; };
 		C90AD6C31994B23F005A035F /* BubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BubbleView.m; sourceTree = "<group>"; };
+		C963FDB91B0F13AB004E56DB /* SideActionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SideActionView.h; sourceTree = "<group>"; };
+		C963FDBA1B0F13AB004E56DB /* SideActionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SideActionView.m; sourceTree = "<group>"; };
 		C9C8957E19A3C455001400C4 /* TaskTSDconfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TaskTSDconfig.h; sourceTree = "<group>"; };
 		C9C8957F19A3C5F6001400C4 /* AnotherBubbleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnotherBubbleView.h; sourceTree = "<group>"; };
 		C9C8958019A3C5F6001400C4 /* AnotherBubbleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnotherBubbleView.m; sourceTree = "<group>"; };
@@ -153,6 +156,8 @@
 				C9F0D3A11A4F51B200CD99EA /* Task+Read.h */,
 				C9F0D3A21A4F51B200CD99EA /* Task+Read.m */,
 				D49BF4AE1A6EBE45007621E2 /* Images.xcassets */,
+				C963FDB91B0F13AB004E56DB /* SideActionView.h */,
+				C963FDBA1B0F13AB004E56DB /* SideActionView.m */,
 			);
 			path = TaskTSD;
 			sourceTree = "<group>";
@@ -252,6 +257,7 @@
 				D49C77F0198B7DBE00742469 /* main.m in Sources */,
 				C9F0D3A01A4EE70E00CD99EA /* CoreDataTableViewController.m in Sources */,
 				D49C77F4198B7DBE00742469 /* AppDelegate.m in Sources */,
+				C963FDBB1B0F13AB004E56DB /* SideActionView.m in Sources */,
 				C90AD6C41994B23F005A035F /* BubbleView.m in Sources */,
 				D49C7800198B7DBE00742469 /* FirstViewController.m in Sources */,
 				C9F0D3861A4EC60C00CD99EA /* TaskDataModels.xcdatamodeld in Sources */,

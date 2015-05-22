@@ -22,4 +22,12 @@
 #define kTaskTSD_DefaultMaxScale 2.0f
 
 
+// side actions
+#define kSideBarDefaultOpacity 0.3
+#define kSideBarOnFocusOpacity 0.9
+
+// Screen Size
+#define isiPhone5  ([[UIScreen mainScreen] bounds].size.height == 568)?TRUE:FALSE
+
+
 #endif
