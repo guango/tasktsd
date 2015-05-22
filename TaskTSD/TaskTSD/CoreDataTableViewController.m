@@ -123,7 +123,7 @@
                 
             case NSFetchedResultsChangeUpdate:
                 // reload task
-                                NSLog(@"reload task");
+//                NSLog(@"reload task");
                 break;
                 
             case NSFetchedResultsChangeMove:

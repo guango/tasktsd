@@ -25,6 +25,7 @@ float origX;
 float origY;
 BOOL bubbleBelowKeyboardHeight = NO;
 float currentViewOffsetOnKeyboard;
+float lastScale;
 
 - (void)setManagedObjectContext:(NSManagedObjectContext *)managedObjectContext
 {
@@ -73,7 +74,7 @@ float currentViewOffsetOnKeyboard;
     
     NSArray* results = [self.fetchedResultsController fetchedObjects];
     if(results){
-        NSLog(@"loaded %d results", [results count]);
+        NSLog(@"loaded %d results", (int)[results count]);
         for (Task* task in results) {
             AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithTask:task];
             bubbleViewLocal.backgroundColor = [self getRandomColor];
@@ -287,9 +288,24 @@ float currentViewOffsetOnKeyboard;
 
 -(void)onPinchBubble:(UIPinchGestureRecognizer *)pinch
 {
-    //NSLog(@"%f",pinch.scale);
-    pinch.view.transform = CGAffineTransformScale(pinch.view.transform, pinch.scale, pinch.scale);
-    pinch.scale = 1;
+    if([pinch state] == UIGestureRecognizerStateBegan) {
+        // Reset the last scale, necessary if there are multiple objects with different scales
+        lastScale = [pinch scale];
+    }
+    
+    if ([pinch state] == UIGestureRecognizerStateBegan ||
+        [pinch state] == UIGestureRecognizerStateChanged) {
+        
+        CGFloat currentScale = [[[pinch view].layer valueForKeyPath:@"transform.scale"] floatValue];
+        
+        CGFloat newScale = 1 -  (lastScale - [pinch scale]);
+        newScale = MIN(newScale, kTaskTSD_DefaultMaxScale / currentScale);
+        newScale = MAX(newScale, kTaskTSD_DefaultMinScale / currentScale);
+        CGAffineTransform transform = CGAffineTransformScale([[pinch view] transform], newScale, newScale);
+        [pinch view].transform = transform;
+        
+        lastScale = [pinch scale];  // Store the previous scale factor for the next pinch gesture call
+    }
     
     if ( [pinch.view isKindOfClass:[AnotherBubbleView class]] ){
         AnotherBubbleView *taskBubble = (AnotherBubbleView *)pinch.view;
