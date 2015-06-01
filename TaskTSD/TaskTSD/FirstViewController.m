@@ -7,7 +7,7 @@
 //
 
 #import "FirstViewController.h"
-#import "AnotherBubbleView.h"
+#import "BubbleView.h"
 #import "TaskTSDconfig.h"
 #import "RadarView.h"
 #import "Task+Create.h"
@@ -92,7 +92,7 @@ float lastScale;
     if(results){
         NSLog(@"loaded %d results", (int)[results count]);
         for (Task* task in results) {
-            AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithTask:task];
+            BubbleView * bubbleViewLocal = [[BubbleView alloc] initWithTask:task];
             bubbleViewLocal.backgroundColor = [self getRandomColor];
             bubbleViewLocal.font = [UIFont systemFontOfSize:kTaskTSD_DefaultFontSize];
             bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
@@ -173,7 +173,7 @@ float lastScale;
 		UISwipeGestureRecognizer *swipeGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeGestureHandler:)];
 		[swipeGesture requireGestureRecognizerToFail:bubblePanGesture];
         
-		AnotherBubbleView * bubbleViewLocal = [[AnotherBubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
+		BubbleView * bubbleViewLocal = [[BubbleView alloc] initWithFrame:CGRectMake(location.x - kTaskTSD_defaultTaskWidth / 2, location.y - kTaskTSD_DefaultTaskHeight / 2, kTaskTSD_defaultTaskWidth, kTaskTSD_DefaultTaskHeight)];
 		bubbleViewLocal.backgroundColor = [self getRandomColor];
         bubbleViewLocal.font = [UIFont systemFontOfSize:kTaskTSD_DefaultFontSize];
         bubbleViewLocal.layer.cornerRadius = kTaskTSD_DefaultTaskCornerRadius;
@@ -190,7 +190,7 @@ float lastScale;
     }
 }
 
-- (BOOL)textViewShouldBeginEditing:(AnotherBubbleView *)textView {
+- (BOOL)textViewShouldBeginEditing:(BubbleView *)textView {
 
 	[self.view bringSubviewToFront:textView];
 	textView.textAlignment = NSTextAlignmentNatural;
@@ -202,7 +202,7 @@ float lastScale;
 	return YES;
 }
 
-- (BOOL)textViewShouldEndEditing:(AnotherBubbleView *)textView {
+- (BOOL)textViewShouldEndEditing:(BubbleView *)textView {
 
     Task *task = [Task managedTaskWithTaskId:textView.taskId text:textView.text andRect:textView.frame inManagedObjectContext:self.managedObjectContext];
     task.text = textView.text;
@@ -222,7 +222,7 @@ float lastScale;
 	return YES;
 }
 
--(void)setBubbleBelowKeyboardHeight:(AnotherBubbleView *)bubble
+-(void)setBubbleBelowKeyboardHeight:(BubbleView *)bubble
 {
     float bottomBorderHeight = bubble.frame.origin.y + bubble.frame.size.height;
     
@@ -270,7 +270,7 @@ float lastScale;
 				swipeGesture.view.alpha = 0.0;
 			} completion:^(BOOL finished) {
 				NSLog(@"gone!");
-                AnotherBubbleView * view = (AnotherBubbleView *)swipeGesture.view;
+                BubbleView * view = (BubbleView *)swipeGesture.view;
                 if(view){
                     NSString* taskId = view.taskId;
                     if(taskId){
@@ -332,8 +332,8 @@ float lastScale;
         lastScale = [pinch scale];  // Store the previous scale factor for the next pinch gesture call
     }
     
-    if ( [pinch.view isKindOfClass:[AnotherBubbleView class]] ){
-        AnotherBubbleView *taskBubble = (AnotherBubbleView *)pinch.view;
+    if ( [pinch.view isKindOfClass:[BubbleView class]] ){
+        BubbleView *taskBubble = (BubbleView *)pinch.view;
         
         Task *task = [Task managedTaskWithTaskId:taskBubble.taskId text:taskBubble.text andRect:taskBubble.frame inManagedObjectContext:self.managedObjectContext];
         task.xPosition = [NSNumber numberWithFloat:taskBubble.frame.origin.x];
